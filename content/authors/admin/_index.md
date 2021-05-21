@@ -7,9 +7,9 @@ bio: I have been engaged in Java development, Unix system management,
   operation and maintenance and DevOps. Now I am working at Cloudera as a Big
   Data technical support.
 interests:
-  - I like Japanese ACG subculture
-  - and I can speak Japanese fluently. My favorite anime is Tomino Yoshiyuki's
-    Gundam series.
+  - Japan ACG
+  - Learning IT skills
+  - Writing blogs.
 social:
   - icon: envelope
     icon_pack: fas
