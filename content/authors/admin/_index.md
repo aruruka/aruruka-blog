@@ -9,7 +9,7 @@ bio: I have been engaged in Java development, Unix system management,
 interests:
   - Japan ACG
   - Learning IT skills
-  - Writing blogs.
+  - Writing blogs
 social:
   - icon: envelope
     icon_pack: fas
