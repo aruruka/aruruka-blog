@@ -26,7 +26,13 @@ organizations:
   - name: Cloudera
     url: https://www.cloudera.com
 education:
-  courses: []
+  courses:
+    - institution: Shenzhen University
+      course: Japanese Language
+      year: 2012
+    - course: Publishing and Editing
+      institution: Sapporo University
+      year: 2012
 email: keraymondyan69@gmail.com
 superuser: true
 ---
