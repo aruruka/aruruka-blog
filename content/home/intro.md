@@ -2,7 +2,7 @@
 widget: starter.blog.intro
 widget_id: blog-intro
 headless: true
-weight: 10
+weight: 20
 title: 🔰 Big Data and Cloud Native
 subtitle: しかし、私もニュータイプの筈だ！
 active: true
