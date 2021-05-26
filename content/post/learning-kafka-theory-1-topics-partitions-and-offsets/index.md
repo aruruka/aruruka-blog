@@ -16,7 +16,7 @@ categories:
   - Big Data
 image:
   filename: featured.png
-  focal_point: TOPRIGHT
+  focal_point: smart
   preview_only: false
   alt_text: We need to be very familiar with the basic concepts of Kafka to be
     proficient in troubleshooting. This article explains what Topics, Partitions
