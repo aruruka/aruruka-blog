@@ -15,7 +15,7 @@ tags:
 categories:
   - Big Data
 image:
-  filename: kafka_logo.png
+  filename: featured.png
   focal_point: Smart
   preview_only: false
   alt_text: We need to be very familiar with the basic concepts of Kafka to be
