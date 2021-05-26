@@ -1,7 +1,12 @@
 ---
 title: Learning Kafka | Theory-1 | Topics, Partitions and Offsets
 date: 2021-05-22T11:48:46.131Z
-draft: true
+summary: The basic concept in Kafka is Topic, which is split into one or more
+  Partitions for storage. Topic is a logical concept, Partition is an entity.
+  The unit of data we write to Kafka is message. These messages are saved in the
+  form of Offset in Partition. The number of offsets is infinite, and offsets
+  are only meaningful for specific Partitions.
+draft: false
 featured: false
 authors:
   - admin
