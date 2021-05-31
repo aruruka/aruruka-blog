@@ -1,7 +1,7 @@
 ---
 title: Learning Kafka | Theory-2 | Brokers
 date: 2021-05-26T05:25:45.056Z
-draft: true
+draft: false
 featured: false
 authors:
   - admin
@@ -13,7 +13,8 @@ image:
   filename: featured.png
   focal_point: Smart
   preview_only: false
-  alt_text: This article explains the relationship between Broker and Topic in Kafka.
+  alt_text: This article explains the relationship between Broker and Topic in
+    Kafka. Data of a Topics spread into Brokers.
 ---
 ## Brokers
 
@@ -58,3 +59,41 @@ We'll see how that works later on.
 When you get started to Kafka and create a cluster, a good number is three regarding the number of brokers.
 
 But some big clusters of some huge companies do have up to 100 Brokers and that's expected, okay?
+
+## Brokers and Topics
+
+* Example of 🗨Topic-A with🗨 **3 partitions**
+* Example of 🗨Topic-B with🗨 **2 partitions**
+
+![](kafka-theory_broker_broker_and_topic.png "Brokers and Topics")
+
+So intuitively, the first partition of Topic-A is going to be on Broker 101 and for now just read the partition as like the file, okay?
+So, Broker 101 will have Partition 0; Broker 102 will have Partition 2; and Broker 103 will have Partition 1.
+So as you can see the partition number and the broker number is no relationship.
+
+**It could be in whatever order.**
+
+But as you can see, the Topic is spread. So, Kafka is really good.
+When you create a Topic, Kafka will automatically assign the Topic and distribute it accross all your Brokers, okay?
+If I am to create Topic-A with three Partitions, the three Partitions will not end on Broker 101.
+So it's already done for you.
+
+- - -
+
+Now, if you have a Topic-B with two Partitions, with the Topic-B with Partition 1 and Topic-B with Partition 0 on Broker 101 and 102?
+
+![](kafka-theory_broker_broker_and_topic_2.png "Broker and Topics - 2")
+
+- **Note: Data is distributed and Broker 103 doesn't have any 🗨Topic-B🗨 data.**
+
+So this one, they're less Partitions and number of Brokers. So Broker 103 does not hold any data from Topic-B, okay?
+
+And that's expected.
+
+So it's very very more to understand that. And if you were to create a Topic with four Partitions, then one of the Brokers will have two partitions of the thread Topic, okay?
+
+So you can play around but this is basically it.
+
+So remember this diagram.
+
+In the next lecture we're going to go once level up and talk about replication factor.
