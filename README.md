@@ -1,5 +1,7 @@
 <!--<p align="center"><a href="https://wowchemy.com" target="_blank" rel="noopener"><img src="https://sourcethemes.com/academic/img/logo_200px.png" alt="Wowchemy Website Builder"></a></p>-->
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/abc49231-4ff4-44a8-843e-bb231e7f3fc2/deploy-status)](https://app.netlify.com/sites/shouneng-blog/deploys)
+
 # Blog Template for [Wowchemy Website Builder](https://wowchemy.com)
 
 The **Blog Template** empowers you to create your own *personal blog* or *build a business around your content*.
