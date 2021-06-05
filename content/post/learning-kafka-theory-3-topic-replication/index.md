@@ -48,4 +48,10 @@ if a machine goes down, then the things still work, and replication does that fo
 
 ![](kafka-theory_topic_replication-1.png "Diagram-1: Example: Topic-A with 2 partitions and replication factor of 2")
 
-Bla  bla bla
+Here is an example, hands-on.
+
+We are going to have Topic-A with 2 partitions. Partition 0 got assigned to Broker 101 and Partition 1 got assigned to Broker 102.
+
+Because there's a replication factor of two, we need to see two replicas of these partitions somewhere.
+
+Partition 0 of Topic-A is also going to be replicated on Broker 102
