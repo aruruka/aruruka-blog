@@ -30,6 +30,8 @@ image:
     as,  if a machine goes down, then the things still work, and replication
     does that for us.
 ---
+## Topic Replication Factor
+
 As you've seen, Kafka is a distributed system.
 
 We may have three Brokers or one hundred Brokers, so this is distributed.
@@ -37,3 +39,13 @@ We may have three Brokers or one hundred Brokers, so this is distributed.
 So, when there's a distributed system in the big data world, we need to have replication, such as,
 
 if a machine goes down, then the things still work, and replication does that for us.
+
+- - -
+
+* Topics should have a replication factor > than 1 (usually between 2 and 3)
+* This way if a Broker is down, another Broker can serve the data
+* Example: Topic-A with 2 partitions and replication factor of 2
+
+![](kafka-theory_topic_replication-1.png "Diagram-1: Example: Topic-A with 2 partitions and replication factor of 2")
+
+Bla  bla bla
