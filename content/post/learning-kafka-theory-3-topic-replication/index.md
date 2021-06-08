@@ -104,3 +104,9 @@ Let's have a look at the previous example.
 ![](kafka-theory_topic_replication-3.png "Diagram-3: Example: Topic-A with 2 partitions and replication factor of 2")
 
 This time, for Partition 0, Broker 101 is going to be the leader, while Broker 102 is going to be a replica, or ISR.
+
+As you can see, the replication goes from Partition 0 on Broker 101 to Partition 0 on Broker 102.
+
+Similarly, for Partition 1, there's going to be Broker 102 that will be the leader for Partition 1, and then the replication will happen all the way to Partition 1 on Broker 103.
+
+So that's the important thing.
