@@ -110,3 +110,14 @@ As you can see, the replication goes from Partition 0 on Broker 101 to Partition
 Similarly, for Partition 1, there's going to be Broker 102 that will be the leader for Partition 1, and then the replication will happen all the way to Partition 1 on Broker 103.
 
 So that's the important thing.
+As you can see, there's a leader and there's a bunch of ISR, or in-sync replica.
+
+So, what decides leaders and ISRs?
+
+We'll see it's called Zookeeper, okay?
+It's not something you have to worry about, there are also questions.
+
+What if Broker 101 goes down?
+Is there election that happens?
+
+Yes, if Broker 101 on the left-hand side is lost, then the Partition 0 on <ins>**Broker 102 will become the leader because it was an in-sync replica before, and then wehen Broker 101 comes back, it will try to become the leader again**</ins>.
