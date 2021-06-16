@@ -2,14 +2,20 @@
 title: Migrate brokers by modifying broker IDs in meta.properties
 subtitle: Kafka Broker migration on CDP
 date: 2021-06-16T08:54:44.301Z
-summary: "Purpose of this artical:   Our purpose is to replace the nodes of
-  Kafka Broker. We have 2 nodes newly added to the CDP PvC Base cluster. We will
-  migrate two Kafka Brokers that were originally in use to these two new nodes.
-  This article uses Cloudera CDP official documentation as a guide."
+summary: >-
+  Purpose of this artical: 
+
+  Our purpose is to replace the nodes of Kafka Broker.
+
+  We have 2 nodes newly added to the CDP PvC Base cluster.
+
+  We will migrate two Kafka Brokers that were originally in use to these two new nodes.
+
+  This article uses Cloudera CDP official documentation as a guide.
 draft: false
 featured: false
 authors:
-  - Raymond Yan
+  - admin
 tags:
   - Cloudera
   - CDP
@@ -17,14 +23,14 @@ tags:
 categories:
   - Big Data
 image:
-  filename: cloudera.jpg
+  filename: ""
   focal_point: Smart
   preview_only: false
-  alt_text: "Purpose of this artical:  Our purpose is to replace the nodes of
-    Kafka Broker. We have 2 nodes newly added to the CDP PvC Base cluster. We
-    will migrate two Kafka Brokers that were originally in use to these two new
-    nodes. This article uses Cloudera CDP official documentation as a guide."
-  caption: The copyright of this image belongs to Cloudera, Inc.
+  alt_text: Our purpose is to replace the nodes of Kafka Broker. We have 2 nodes
+    newly added to the CDP PvC Base cluster. We will migrate two Kafka Brokers
+    that were originally in use to these two new nodes. This article uses
+    Cloudera CDP official documentation as a guide.
+  caption: ""
 ---
 <!-- MarkdownTOC -->
 
