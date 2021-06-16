@@ -17,13 +17,14 @@ tags:
 categories:
   - Big Data
 image:
-  filename: https://store-images.s-microsoft.com/image/apps.16484.a4e04b8c-55f0-4d2e-a20b-086fe0fb338e.ec800587-d247-4f64-9c50-d09b603089f7.1876738f-84de-4660-93e0-42b89044eab1
+  filename: cloudera.jpg
   focal_point: Smart
   preview_only: false
   alt_text: "Purpose of this artical:  Our purpose is to replace the nodes of
     Kafka Broker. We have 2 nodes newly added to the CDP PvC Base cluster. We
     will migrate two Kafka Brokers that were originally in use to these two new
     nodes. This article uses Cloudera CDP official documentation as a guide."
+  caption: The copyright of this image belongs to Cloudera, Inc.
 ---
 <!-- MarkdownTOC -->
 
