@@ -119,4 +119,9 @@ It's not something you have to worry about, there are also questions.
 What if Broker 101 goes down?
 Is there election that happens?
 
-Yes, if Broker 101 on the left-hand side is lost, then the Partition 0 on <ins>**Broker 102 will become the leader because it was an in-sync replica before, and then wehen Broker 101 comes back, it will try to become the leader again**</ins>.
+Yes, if Broker 101 on the left-hand side is lost, then the Partition 0 on <ins>**Broker 102 will become the leader because it was an in-sync replica before, and then wehen Broker 101 comes back, it will try to become the leader again**</ins>, after replicating the data.
+This is happening for you in background, just for you to know about it, but all of this is handled by Kafka, and the leader and ISR is determined by Zookeeper, okay?
+
+That's all for Topic Replication Factor, for now.
+
+I will see you in the next lecture.
