@@ -15,10 +15,10 @@ summary: >-
 
 
   This article attempts to analyze what is the Replication Factor in Kafka.
-draft: true
+draft: false
 featured: false
 authors:
-  - Raymond Yan
+  - admin
 tags:
   - Kafka
 categories:
