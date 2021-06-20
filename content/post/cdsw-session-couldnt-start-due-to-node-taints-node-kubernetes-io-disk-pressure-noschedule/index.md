@@ -18,7 +18,7 @@ categories:
   - Cloudera
 image:
   filename: featured.jpg
-  focal_point: Smart
+  focal_point: RIGHT
   preview_only: true
 ---
 <!--StartFragment-->
