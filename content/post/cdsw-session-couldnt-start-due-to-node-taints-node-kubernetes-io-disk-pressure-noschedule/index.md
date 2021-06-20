@@ -17,7 +17,7 @@ tags:
 categories:
   - Cloudera
 image:
-  filename: cloudera.jpg
+  filename: ""
   focal_point: Smart
   preview_only: false
 ---
