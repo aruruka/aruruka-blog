@@ -17,7 +17,7 @@ tags:
 categories:
   - Cloudera
 image:
-  filename: https://jp.cloudera.com/content/dam/www/marketing/images/logos/cloudera/cloudera-newco-logo.png
+  filename: ""
   focal_point: Smart
   preview_only: false
 ---
