@@ -12,6 +12,9 @@ summary: >-
 
 
   if a machine goes down, then the things still work, and replication does that for us.
+
+
+  This article attempts to analyze what is the Replication Factor in Kafka.
 draft: true
 featured: false
 authors:
@@ -24,11 +27,7 @@ image:
   filename: featured.png
   focal_point: Smart
   preview_only: false
-  alt_text: As you've seen, Kafka is a distributed system.  We may have three
-    Brokers or one hundred Brokers, so this is distributed.  So, when there's a
-    distributed system in the big data world, we need to have replication, such
-    as,  if a machine goes down, then the things still work, and replication
-    does that for us.
+  alt_text: This article attempts to analyze what is the Replication Factor in Kafka.
 ---
 ## Topic Replication Factor
 
@@ -40,7 +39,7 @@ So, when there's a distributed system in the big data world, we need to have rep
 
 if a machine goes down, then the things still work, and replication does that for us.
 
-- - -
+---
 
 * Topics should have a replication factor > than 1 (usually between 2 and 3)
 * This way if a Broker is down, another Broker can serve the data
