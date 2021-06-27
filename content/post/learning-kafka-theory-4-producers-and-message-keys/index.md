@@ -57,8 +57,9 @@ Automatically send a little bit to broker one, a little bit to broker two, a lit
 
 * Producers can choose to receive acknowledgement of data writes:
 
-  * acks=0: Producer won't wait for acknowledgement (possible data loss)
-  * acks=1: Producer will wait for leader acknoledgement (limited data loss)
+  * <ins>**acks=0**</ins>: Producer won't wait for acknowledgement (possible data loss)
+  * <ins>**acks=1**</ins>: Producer will wait for leader acknoledgement (limited data loss)
+  * <ins>**acks=all**</ins>: Leader + Replicas acknoledgement (no data loss)
 
 ![kafka-theory_producers_and_message_keys-2.png](kafka-theory_producers_and_message_keys-2.png "automatic load balance by broker")
 
@@ -70,4 +71,25 @@ Acks equals zero, which is the producer just sends the data  and you will not wa
 
 Because if you send the data to your broker and the broker is down, but we don't know about it because we set acks equals zero and we weill not get an acknoledgement and we will lose the data, so this is tricky and we'll see examples in which acks equals zero is used but it's very dangerous.
 
-Acks equals one is the default, which is producer will wait for the leader to acknoledge, so it sends data, for example to partition zero, to broker 101, and it says, hey, here's the data.
+Acks equals one is the default, which is producer will wait for the leader to acknoledge, so it sends data, for example to partition zero, to broker 101, and it says, hey, here's the data. And when the broker has it, and it's written and stuff, the broker will say, alright, I have it, here's the acknoledgements. And so there's limited data loss, we'll see when data loss happens for this case.
+
+And then there's acks equals all. And acks equals all is the leader, so broker 101 for example, and all the replicas, so the replicas are not show in this diagram but you can remember the replica diagram, so the leader and the replicas have to say, yep, I got the data and then you have no data loss because you know that the replicas also have the data so even if you lose broker 101, you're good.
+
+Anyway, this is a bit advanced right now, but just remember, we have three send modes, zero one and all for acks. And the more you go towards all, the less data loss you'll get.
+
+## Producers: Message Keys
+
+- Producers can choose to sent a **key** with the message (string, number, etc.)
+- If key=null, data is sent round robin (broker 101 then 102 then 103...)
+
+Now let's talk about message keys for producers.
+Producers can choose to send a key with the message and the key can be anything you want.
+It can be a string, it can be a number, it can be whatever you want and if the key is not sent so key equals null then the data will be sent round robin, so this is what we saw before.
+
+So that means the first data, the first message will be sent to broker 101, then the second message will be sent to broker 102, et cetera, et cetera, et cetera.
+
+So it round robins across the partitions and therefore across the brokers.
+
+And if a key is sent, then all the messages for that key will always go to the same partition, that's a Kafka guarantee.
+
+So what is a key?
