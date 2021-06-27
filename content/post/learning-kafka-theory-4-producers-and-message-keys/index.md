@@ -80,7 +80,8 @@ Anyway, this is a bit advanced right now, but just remember, we have three send 
 ## Producers: Message Keys
 
 - Producers can choose to sent a **key** with the message (string, number, etc.)
-- If key=null, data is sent round robin (broker 101 then 102 then 103...)
+- If key=null, data is sent round robin (broker 101 then 102 then 103...) 
+- If a key is sent, then all messages for that key will always go to the same partition
 
 Now let's talk about message keys for producers.
 Producers can choose to send a key with the message and the key can be anything you want.
