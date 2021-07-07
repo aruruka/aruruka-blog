@@ -57,9 +57,11 @@ But the bottom line is the data for each partition, within each partition, is re
 
 Now, how do these consumers read data from all the partitions, et cetera, et cetera?
 
-- Consumers read data in consumer groups
-- Each consumer within a group reads from exclusive partitions
-- If you have more consumers than partitions, some consumers will be inactive
+* Consumers read data in consumer groups
+* Each consumer within a group reads from exclusive partitions
+* If you have more consumers than partitions, some consumers will be inactive
+
+![kafka-theory_consumers_and_consumer_groups-2.png](kafka-theory_consumers_and_consumer_groups-2.png)
 
 There is a concept of consumer groups. Basically, you're gonna have a lot of consumers, and a consumer is basically like a Java application or whatever language you're using, and they will read data in groups.
 Each consumer within a group will read directly from exclusive partitions.
@@ -68,3 +70,20 @@ And if you have more consumers than partitions, some will be inactive.
 We'll see this in the very next slide.
 
 Here's an example.
+We have our Topic-A and it has three partitions. Now, we have our first consumer group, and, basically, a consumer group represents an application.
+For example, this is my dashboard application, and I have two consumers.
+Well, the Consumer One is going to read from two partitions, and the Consumer Two is going to read from the third partition.
+As you can see, this was the example just like before, Consumer One reads from two partitions at a time, while Consumer Two just one at a time.
+Now, we've an other application, maybe it's an analytics application, and this one has three consumers.
+The name of the consumer group is whatever you wanna name it, but we'll name it consumer-group-application-2.
+In this case, each consumer will read from one partition only.
+And, finally, say we've a third application, that's maybe out notification service, and we have one consumer only.
+Well, that one consumer is going to be reading from the three partitions at the same time.
+As you can see, the work is divided.
+But what happens when you have more consumers and stuff?
+Just before we drew up this, just know that the consumers, they will know exactly how to coordinate, and how to go to which partition automatically, using the group coordinator and consumer coordinator.
+It's not something you have to program. It's a mechanizm already implemented in Kafka, and we'll see a demo of it.
+
+### Consumer Groups - What if too many consumers?
+
+What if you have too many consumers?
