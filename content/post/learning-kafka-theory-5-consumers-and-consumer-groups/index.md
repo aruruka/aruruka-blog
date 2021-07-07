@@ -54,3 +54,13 @@ There is no guarantee.
 But the bottom line is the data for each partition, within each partition, is read in order.
 
 ## Consumer Groups
+
+Now, how do these consumers read data from all the partitions, et cetera, et cetera?
+
+There is a concept of consumer groups. Basically, you're gonna have a lot of consumers, and a consumer is basically like a Java application or whatever language you're using, and they will read data in groups.
+Each consumer within a group will read directly from exclusive partitions.
+
+And if you have more consumers than partitions, some will be inactive.
+We'll see this in the very next slide.
+
+Here's an example.
