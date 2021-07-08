@@ -1,7 +1,7 @@
 ---
 title: Learning Kafka | Theory-6 | Consumer Offsets and Delivery Semantics
 date: 2021-07-08T16:25:28.382Z
-draft: true
+draft: false
 featured: false
 authors:
   - admin
