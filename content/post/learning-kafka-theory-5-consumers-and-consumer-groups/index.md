@@ -1,12 +1,11 @@
 ---
 title: Learning Kafka | Theory-5 | Consumers and Consumer Groups
 date: 2021-07-06T19:46:14.788Z
-summary: >-
-  Now, we're getting into the very important concept of consumers.
-
-
-  We know about producers, but now things need to read data, so here is consumers.
-draft: true
+summary: |-
+  Consumers read data in a Consumer Group.
+  Each consumer within a group reads from exclusive partitions.
+  If you have more consumers than partitions, some consumers will be inactive.
+draft: false
 featured: false
 authors:
   - admin
@@ -46,7 +45,7 @@ So as you can see here, the data is read in order.
 The consumer will not see Offset Three before seeing Offset Two.
 It's really important to understand that. Now, consumers can also read from multiple partitions.
 In this example, we have another consumer, and it's reading the data in order for Partition One, but it's also reading the data in order for Partition Two.
-But, as you can see, there is no guarantee across the order between Partition One adn Partition Two.
+But, as you can see, there is no guarantee across the order between Partition One and Partition Two.
 It reads them in parallel.
 So the actual mechanism, some students ask me this, is that it will read a little bit from Partition One, then it will read a little bit from Partition Two, and then a little bit from Partition One, et cetera, et cetera.
 There is no specific order, and you can see Offset Five appear on Partition Two before Partition One or the opposite.
@@ -87,3 +86,26 @@ It's not something you have to program. It's a mechanizm already implemented in 
 ### Consumer Groups - What if too many consumers?
 
 What if you have too many consumers?
+
+* If you have more consumers than partitions, some consumers will be inactive
+
+![kafka-theory_consumers_and_consumer_groups-3.png](kafka-theory_consumers_and_consumer_groups-3.png)
+
+Well, if you have more consumers than partitions, as I said, some consumers will be inactive.
+
+Here's an example.
+We have four consumers in our application, and only three can read from partitions, because we only have three partitions to read from.
+The fourth consumer is here to be inactive.
+Sometimes you may want that, because say you're gonna lose Consumer 3, like the application just stops or the machine shuts down, then Consumer 4 can take over right away.
+
+This is the only case where you would want this.
+But, usually, you don't have inactive consumers. You just have as many consumers as partitions at most.
+That's why it's so important when you choose a number of partitions for your topic.
+If you want to have a high number of consumers, you need to have a high number of partitions. This is a decision that you have to make.
+
+In this example, we have three partitions, so we can only have three consumers, max, at the same time in a consuer group, otherwise others will be inactive.
+
+I hope that helps. We'll see again all these concepts in the hands-on when we start getting our hands dirty, but, at a high level, they should make sense.
+
+If you have any questions, wait until the hands-on.
+I will see you in the next lecture.
