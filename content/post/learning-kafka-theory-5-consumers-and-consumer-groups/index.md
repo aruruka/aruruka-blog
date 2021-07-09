@@ -32,7 +32,7 @@ We know about producers, but now things need to read data, so here is consumers.
 * In case of broker failures, consumers know how to recover
 * Data is read in order <ins>**within each partitions**</ins>
 
-![kafka-theory_consumers_and_consumer_groups-1.png]()
+
 
 As we said, consumers will read data from a topic, and the topic is going to be identified by its name. The consumers, they know which broker to read from automatically, it's already programmed for you, and, in case of broker failures, just like producers, the consumers will know how to recover. This is already done for you. You don't have to think about this. Data, overall, will be read in order within each partition.
 So we'll see what that means right now.
