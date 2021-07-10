@@ -1,7 +1,19 @@
 ---
 title: Learning Kafka | Theory-6 | Consumer Offsets and Delivery Semantics
 date: 2021-07-08T16:25:28.382Z
-draft: true
+summary: >
+  Kafka stores the offsets at which a consuemr group has been reading.
+
+  The offsets committed live in a Kafka topic named __consumer_offsets.
+
+  When a consumer from group has processed data received from Kafka, it should be committing the offsets.
+
+  If a consumer dies, it will be able to read back from where it left off thanks to the committed consumer offsets!
+
+  Consumers choose when to commit offsets.
+
+  There are three delivery semantics: at most once, at least once and exactly once.
+draft: false
 featured: false
 authors:
   - admin
@@ -66,6 +78,13 @@ But right now, at a high level, you need to understand that the consumers, they 
 - <span style="color:LightBlue">At least once (usually preferred):</span>
 
   - offsets are committed after the message is processed.
+  - If the processing goes wrong, the message will be read again.
+  - This can result in duplicate processing of messages. Make sure your processing is <ins>idempotent</ins> (i.e. processing again the messages won't impact your systems)
+
+- <span style="color:LightBlue">Exactly once:</span>
+
+  - Can be achieved for Kafka => Kafka workflows using Kafka Streams API
+  - For Kafka => External System workflows, use an <ins>idempotent</ins> consumer.
 
 Okay, you have the possibility to choose this, and, so, that gives you three delivery semantics.
 
@@ -76,4 +95,19 @@ And if the processing goes wrong, the message will be lost. It won't be read aga
 I'll have a slide on this, in the advanced section, explaining exactly what happens.
 So, at most once is usually not preferred.
 
-At least once is usually the preferred way of consuming, so you commit 
+At least once is usually the preferred way of consuming, so you commit your offsetsk only after your messages have been processed, so you read data, you do something with the data, and then you commit the offsets.
+Now, if the processing goes wrong, so if your consumer goes down, then the messages will be read again. And, so, that's why it's called at least once.
+Before, it won't be read again, so it's called at most once, and now it's read twice, so it's called at least once.
+So, because they can be duplicate processing those message, because you can read this message twice, using this mechanism, you need to make sure that your processing system is idempotent.
+That means that if you process the same message twice, it will not impact your system, okay?
+
+And then you have exactly once, and exactly once is the last mode. It's kind of like the holy grail. And, so, it can only be achieved from for Kafka to Kafka workflows, using the Kafka Streams API.
+Maybe it can be achieved using Spark and other stuff, but you have to look into their documentation, specifically.
+But, it's only from Kafka to Kafka. Now, for Kafka to External System. For example, from Kafka to a database, you definitely want exactly once.
+You don't want to have duplicates into your database.
+But for this, you have to use an idempotent consumer, so anything that mentions that Kafka to External System as exactly once, most likely means that it's using an idempotent consumer, which makes sure that there's no duplicates in the final delivery semantics.
+We'll go do a deep dive into them, during this course, okay?
+But at high level, you have to choose whether or not you want to see messages at most once, at least once, when you get duplicates, or exactly once, when you do Kafka to Kafka workflows.
+
+All right, sounds good?
+Then I will see you in the next lecture.
