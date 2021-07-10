@@ -52,4 +52,23 @@ And so, that's the concept of committing offsets.
 
 ## Delivery semantics for consumers
 
-Now, committing offsets implies something called delivery semantics, and I'm going to give you an intro to this.
+Now, committing offsets implies something called delivery semantics, and I'm going to give you an intro to this. We're going to see this in much greater detail in the next lessons, in the advanced section.
+But right now, at a high level, you need to understand that the consumers, they choose when they commit their offsets.
+
+- Consumers choose when to commit offsets.
+- There are 3 delivery semantics:
+
+- <span style="color:LightBlue">At most once:</span>
+
+  - offsets are committed as soon as the message is received.
+
+Okay, you have the possibility to choose this, and, so, that gives you three delivery semantics.
+
+At most once, at least once, and exactly onece.
+
+So, first, at most once, it's when offsets are committed as soon as the message is received, okay?
+And if the processing goes wrong, the message will be lost. It won't be read again.
+I'll have a slide on this, in the advanced section, explaining exactly what happens.
+So, at most once is usually not preferred.
+
+At least once is usually the preferred way of consuming, so you commit 
