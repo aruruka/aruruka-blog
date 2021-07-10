@@ -61,6 +61,11 @@ But right now, at a high level, you need to understand that the consumers, they 
 - <span style="color:LightBlue">At most once:</span>
 
   - offsets are committed as soon as the message is received.
+  - If the processing goes wrong, the message will be lost (it won't be read again).
+
+- <span style="color:LightBlue">At least once (usually preferred):</span>
+
+  - offsets are committed after the message is processed.
 
 Okay, you have the possibility to choose this, and, so, that gives you three delivery semantics.
 
