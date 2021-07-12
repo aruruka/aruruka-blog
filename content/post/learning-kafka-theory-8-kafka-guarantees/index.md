@@ -1,5 +1,5 @@
 ---
-title: Learning Kafka | Theory-8 | Kafka Guarantees
+title: Learning Kafka | Theory-9 | Kafka Guarantees
 date: 2021-07-12T01:10:36.045Z
 summary: >-
   Messages are appended to a topic-partition in the order they are sent.
