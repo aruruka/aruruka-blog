@@ -9,7 +9,13 @@ image:
   preview_only: false
 ---
 ```shell
-hadoop jar 
+find /opt -type f -iname '*mapreduce*client*tests.jar'
+# /opt/mapr/hadoop/hadoop-2.7.4/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-2.7.4.0-mapr-700-tests.jar
+
+cd /opt/mapr/hadoop/hadoop-2.7.4/share/hadoop/mapreduce
+
+yarn jar hadoop-mapreduce-client-jobclient-2.7.4.0-mapr-700-tests.jar \
+TestDFSIO -write -nrFiles 10 -fileSize 1000 -resFile /tmp/DFSIO-write
 ```
 
 # How to verity and test the Ezmeral Data Fabric installation
