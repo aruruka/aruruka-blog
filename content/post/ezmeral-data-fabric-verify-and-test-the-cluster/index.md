@@ -3,12 +3,19 @@ title: Ezmeral Data Fabric | Verify and Test the Cluster
 date: 2021-11-24T05:22:40.627Z
 draft: true
 featured: false
+authors:
+  - admin
+tags:
+  - MapR
+  - Ezmeral Data Fabric
+categories:
+  - Big Data
 image:
-  filename: featured
+  filename: hpe-logo.png
   focal_point: Smart
   preview_only: false
 ---
-# How to verity and test the Ezmeral Data Fabric installation
+# How to verify and perform benchmark test against the Ezmeral Data Fabric installation
 
 ## Run synthetic benchmarks to gauge cluster performance
 
@@ -131,10 +138,23 @@ Not a valid JAR: /tmp/hsperfdata_mapr/hadoop-mapreduce-client-jobclient-2.7.4.0-
 21/11/24 21:54:43 INFO fs.TestDFSIO:     Test exec time sec: 35.256
 21/11/24 21:54:43 INFO fs.TestDFSIO:
 [root@m2-maprts-vm218-173 mapreduce]#
-
 ```
 
-- DFSIO can be used with –write or –read (must use –write first)
-- Compare DFSIO results to pre-installation performance
-- Measure storage performance using DFSIO and compare to what was expected based on pre-install tests
-- Reasonable starting performance: DFSIO results at least 50% of maximum from disk-test.sh
+* DFSIO can be used with –write or –read (must use –write first)
+* Compare DFSIO results to pre-installation performance
+* Measure storage performance using DFSIO and compare to what was expected based on pre-install tests
+* Reasonable starting performance: DFSIO results in at least 50% of maximum from disk-test.sh.
+
+### RWSpeedTest
+
+
+
+Refer to this Github project: 🔗[jbenninghoff/cluster-validation][MapRClusterValidation]
+
+
+
+___
+
+To be continued...
+
+[MapRClusterValidation]: https://github.com/jbenninghoff/cluster-validation
