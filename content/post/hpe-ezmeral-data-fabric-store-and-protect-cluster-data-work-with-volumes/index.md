@@ -1,6 +1,15 @@
 ---
 title: HPE Ezmeral Data Fabric - Store and Protect Cluster Data - Work with Volumes
 date: 2022-02-25T09:34:22.463Z
+summary: >-
+  This course begins by teaching you about volumes and topology and how to
+  design and implement a volume plan to manage your data. It then covers
+  snapshots, which provide protection against user or application errors.
+  Finally, you will learn how to use mirror volumes for load balancing,
+  deployment, backup, or disaster recovery.
+
+
+  Source: [HPE Ezmeral Learn On-Demand](https://learn.ezmeral.software.hpe.com/store-and-protect-cluster-data)
 draft: true
 featured: true
 authors:
@@ -134,3 +143,6 @@ In this configuration, assigning a volume to the "/data/rack1" topology would li
 Defeating the purpose of defining separate rack topologies.
 
 ![best practice - assign volumes to higher-level topologies](pattern-volume_assigned_rack_topology.png)
+
+In general, it's best to assign higher-level topologies to volumes to
+provide the greatest flexibility for data placement and replication.
