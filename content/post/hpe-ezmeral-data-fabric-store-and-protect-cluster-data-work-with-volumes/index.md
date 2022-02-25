@@ -319,3 +319,21 @@ If you select low latency then both the intermediate and tail containers are rep
 Low latency should only be used if your volume contains smaller files or if the network can handle the additional bandwidth of creating both copies
 at the same time from the same master container.
 Note that the name container always uses low latency of replication and that cannot be changed.
+
+### 6. Target Replication
+
+<details><summary>Replication Type</summary>
+
+![target replication](target_replication.gif)
+
+* Total number you want of each container 
+* From 2 to 6 (default is 3)
+* Name and data containers can have different values
+* If actual replication count falls below this, data is re-replicated after a defined interval
+
+</details>
+
+Target replication is the total number of copies you want of each container. The default is three.
+Different volumes can have different replication targets, each volume can also have a different target for its name container and for its data containers.
+
+If the actual replication count falls below the target replication, the data will automatically be re-replicated after a defined interval, by default one hour. This gives a node or storage pool the chance to come back online and re-establish the replica count before undertaking the somewhat expensive operation of re-replication.
