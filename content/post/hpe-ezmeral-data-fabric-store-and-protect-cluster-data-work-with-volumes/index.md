@@ -128,3 +128,9 @@ Here, there are four racks, each with its own sub-topology still under "/data".
 Volumes will still by default go to the  "/data" topology in this example, they can again go to any node in the cluster, but now MapR FS will automatically replicate the volumes containers to different sub-topologies which spreads the data out over different racks.
 
 ![anti-pattern - assign volumes to a single rack topology](anti_pattern-assigning_volumes_to_rack_topology.png)
+
+In this configuration, assigning a volume to the "/data/rack1" topology would limit the volume's data to the nodes in rack One.
+
+Defeating the purpose of defining separate rack topologies.
+
+![best practice - assign volumes to higher-level topologies](pattern-volume_assigned_rack_topology.png)
