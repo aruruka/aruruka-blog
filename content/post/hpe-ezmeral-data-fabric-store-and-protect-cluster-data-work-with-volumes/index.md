@@ -26,6 +26,8 @@ image:
   focal_point: Smart
   preview_only: false
 ---
+![]()
+
 # Store and Protect Cluster Data - Work with Volumes
 
 ## 5.1.1: Review: Data Fabric FS Structures - Overview of Volumes
@@ -256,3 +258,17 @@ There can only be one accountable entity per volume.
 The primary purpose for assigning accountable entities is to track disk usage for shared clusters.
 
 If you have no need to track how much storage different users or groups are consuming. You can simply leave the accountable entity set to the default.
+
+### 3. Wire Encryption
+
+<details><summary>Wire Encryption</summary>
+
+Whether the volume’s data traffic should be encrypted
+
+![wire encryption](wire_encryption.png)
+
+</details>
+
+If the cluster is installed in the secure mode.
+You can enable or disable wire encryption on the volumes.
+When wire encryption is enabled, data traffic using that volume is encrypted.
