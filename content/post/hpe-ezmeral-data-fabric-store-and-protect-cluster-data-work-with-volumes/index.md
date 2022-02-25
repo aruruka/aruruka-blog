@@ -184,3 +184,54 @@ Allocate nodes to departments.
 ![Rack Awareness](rack_awareness.png)
 
 Your topology should incorporate rack awareness.
+
+## 5.2.7: Best Practices
+
+There are a few best practices for volume topology.
+
+* Do not assign volumes to the "/" topology. You may want to move nodes to a topology that no volume can write to
+
+    First, don't assign volumes to the "/" topology, as you will learn in lesson 11.
+    You may want to move nodes into a topology that no volume can write to, for maintenance or decommissioning.
+* Use high-level topologies, such as /data, for volumes
+
+    Second, use high-level topologies for most volumes so they're replicated throughout the cluster.
+    The default topology for volumes is "/data" and in most cases this is inappropriate.
+* Use lower-level topologies only if required to constrain data placement
+
+  * Isolate departmentsal data
+  * Isolate based on performance requirements
+
+    Finally use lower-level topologies only, if you have to constrain data placement to a smaller set of nodes.
+    Two examples of when this might be required are: if you need to make sure that data from two different departments do not coexist on the same node or if you need certain volumes placed on high-performing nodes.
+
+## 5.3.1: Attributes for Standard Volumes - Volume Attributes
+
+* Properties – general information about the volume
+* Authorization – who can do what
+* Usage –  how much space the volume can use
+
+Volume attributes are divided into four categories: properties, authorization, usage, and schedules.
+We'll talk about the first three in this lesson and cover schedules when we talk about snapshots and mirrors in the next two lessons.
+
+## 5.3.2: Properties
+
+### 1. Name and Mount Path
+
+<details><summary>Name and Mount Path</summary>
+
+<ins>Mount path is relative to the root of the cluster file system</ins>
+
+![mount path](name_mount_path.png)
+
+* Name: projects
+* Mount path: /work/projects
+
+</details>
+
+The only attribute you must supply for a standard volume is its name, which must be unique.
+
+Typically, you will also mount the volume and set a mount path.
+If the volume is mounted and the node is running the NFS service you will be able to see the volume in the cluster file system on the Linux side.
+
+The volume mount path is relative to where the cluster file system is mounted, which is "/mapr/{cluster_name}" by default.
