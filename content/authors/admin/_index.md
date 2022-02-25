@@ -1,11 +1,10 @@
 ---
 title: Raymond Yan
-role: Customer Operation Engineer
+role: Technical Solution Consultant
 avatar_filename: dq5-profile.png
-bio: I have been engaged in Java development, Unix system management,
-  application system operation and maintenance, as well as cloud platform
-  operation and maintenance and DevOps. Now I am working at Cloudera as a Big
-  Data technical support.
+bio: I have previously worked as a Java development, Linux System Administrator,
+  DevOps engineer. I'm a former Cloudera employee now doing tech support for HPE
+  Ezmeral products.
 interests:
   - Japan ACG
   - Learning IT skills
@@ -23,8 +22,8 @@ social:
     icon_pack: fab
     link: https://github.com/aruruka
 organizations:
-  - name: Cloudera
-    url: https://www.cloudera.com
+  - name: HPE Ezmeral
+    url: https://developer.hpe.com/platform/hpe-ezmeral-data-fabric/home/
 education:
   courses:
     - institution: Shenzhen University
