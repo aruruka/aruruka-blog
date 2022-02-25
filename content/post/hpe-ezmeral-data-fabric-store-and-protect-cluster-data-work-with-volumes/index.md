@@ -235,3 +235,24 @@ Typically, you will also mount the volume and set a mount path.
 If the volume is mounted and the node is running the NFS service you will be able to see the volume in the cluster file system on the Linux side.
 
 The volume mount path is relative to where the cluster file system is mounted, which is "/mapr/{cluster_name}" by default.
+
+### 2. Accountable Entity (AE)
+
+<details><summary>Accountable Entity (AE)</summary>
+
+![accountable entity](accountable_entity.png)
+
+* Entity (user or group) accountable for a volume's usage
+* Only one AE per volume
+
+  * Default is MapR admin user (mapr)
+* Track disk usage for shared clusters
+
+</details>
+
+The accountable entity is the user or group accountable for a volume's usage.
+There can only be one accountable entity per volume.
+
+The primary purpose for assigning accountable entities is to track disk usage for shared clusters.
+
+If you have no need to track how much storage different users or groups are consuming. You can simply leave the accountable entity set to the default.
