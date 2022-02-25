@@ -124,3 +124,31 @@ Problem: MapR does not know which nodes are in different racks.
 
 However, with all of the default topologies in place, MapR has no knowledge of which nodes are located in different racks.
 Let's look at exactly why this could be a problem.
+
+## 5.2.3: Default Topology and Replication
+
+
+
+When MapR FS replicates data, it will always replicate to different nodes to spread out the risk of data loss.
+
+
+It has knowledge of where all the nodes are so this is not a problem.
+lt will also replicate to different sub-topologies or racks if they are defined.
+In the default assignment, MapR puts all nodes in a single topology.
+
+
+
+With this single topology configuration, MapR FS doesn't have any way to determine which nodes are in different racks.
+
+It looks to MapR FS as if all of the nodes are in one big rack.
+
+Without defined sub-topologies.
+It's possible for a master container and all of its replicas to be on nodes that are all in the same rack.
+
+This reduces the fault tolerance of your cluster.
+
+
+
+If one rack goes down and all replicas are on nodes in that rack.
+Then your data is unavailable until the rack is put back into service.
+
