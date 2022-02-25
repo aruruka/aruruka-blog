@@ -166,3 +166,21 @@ You should check with your cloud provider to make sure that the virtual machines
 ![Failure Domains](failure_domains.png)
 
 Segregate points of failure, such as racks or power drops.
+
+### 2. Hardware Specifications
+
+![Hardware Specifications](hardware_specifications.png)
+
+Group nodes according to their specifications.
+
+### 3. Department
+
+![Department](department.png)
+
+Allocate nodes to departments.
+
+### 4. Rack Awareness
+
+![Rack Awareness](rack_awareness.png)
+
+Your topology should incorporate rack awareness.
