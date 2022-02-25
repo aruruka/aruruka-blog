@@ -1,0 +1,55 @@
+---
+title: HPE Ezmeral Data Fabric - Store and Protect Cluster Data - Work with Volumes
+date: 2022-02-25T09:34:22.463Z
+draft: true
+featured: true
+authors:
+  - Raymond Yan
+tags:
+  - hpe
+  - ezmeral
+  - data fabric
+  - mapr
+categories:
+  - Big Data
+image:
+  filename: featured.jpg
+  focal_point: Smart
+  preview_only: false
+---
+# Store and Protect Cluster Data - Work with Volumes
+
+## 5.1.1: Review: Data Fabric FS Structures - Overview of Volumes
+
+Let's take a look at the storage architecture behind the map - our distributed file and object-store.
+A cluster is made up of nodes and each node contains a number of disks.
+Disks are considered combined into storage pools with a default size
+of three disks.
+
+Typically each node will have several storage pools.
+When data is written. It is striped across the disks in a single storage pool into logical constructs called containers.
+Each storage pool holds many containers.
+
+Containers, simply hold files and metadata and they are transparent to users and applications. 
+Data containers hold the actual files and name containers primarily hold the metadata.
+Containers are sized automatically and spread throughout the cluster.
+By default, they will grow to about 32 gigabytes.
+
+When a client writes a file to the cluster, the file is first sharded into chunks.
+By default, a chunk is 256 megabytes.
+The first chunk is written to a container as a series of eight-kilobyte blocks.
+All of the blocks in one chunk are written continuously to a single container.
+As the chunk is written, the data is simultaneously replicated. The replication chain length is configurable from one to six.
+This example uses the default value of three.
+
+The first container at chunk is written to, is referred to as its master container.
+The data is replicated to a second container called the intermediate container which will be in a different storage pool on a different node.
+Finally, the chunk is replicated to a tail container only after all replicas have a copy of the data.
+The next chunk is written and replicated in the same manner.
+The second chunk may or may not start in a different master container from the first chunk.
+Blocks are written contiguously into the same container but chunks are written to different containers. So when the file is completely written.
+The chunks that make up a file will be distributed throughout the cluster.
+Finally, containers are stored in volumes.
+
+Volumes are a logical data management entity allowing you to apply policies, quotas, and permissions to logical groups of data.
+A container and all of its replicas will always be in the same volume. Though, as you can see, a volume may spread throughout the entire cluster.
