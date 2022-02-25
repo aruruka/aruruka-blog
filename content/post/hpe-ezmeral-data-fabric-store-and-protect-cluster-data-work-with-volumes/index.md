@@ -337,3 +337,20 @@ Target replication is the total number of copies you want of each container. The
 Different volumes can have different replication targets, each volume can also have a different target for its name container and for its data containers.
 
 If the actual replication count falls below the target replication, the data will automatically be re-replicated after a defined interval, by default one hour. This gives a node or storage pool the chance to come back online and re-establish the replica count before undertaking the somewhat expensive operation of re-replication.
+
+### 7. Minimum Replication
+
+<details><summary>Replication Type</summary>
+
+![minimum replication](minimum_replication.gif)
+
+* Minimum number needed of each container
+* From 1 to 5 (default is 2)
+* Name and data containers can have different values
+* If actual replication count falls below this, an alarm is raised and data is re-replicated immediately
+
+</details>
+
+The minimum replication is the total number of copies you must have
+of each container.
+The default is two. If the actual replication falls below the minimum replication factor, an alarm is raised and data replication begins immediately.
