@@ -146,3 +146,23 @@ Defeating the purpose of defining separate rack topologies.
 
 In general, it's best to assign higher-level topologies to volumes to
 provide the greatest flexibility for data placement and replication.
+
+## 5.2.4: Rack Topology and Virtual Nodes
+
+* If MapR nodes are virtual, it’s possible that all nodes will be launched on the same physical host
+* Check with your cloud provider to make sure MapR nodes are on different physical nodes
+
+Note that if your MapR nodes are virtual nodes such as those
+launched through Amazon Web Services, it's possible that your virtual
+nodes will all be launched on the same physical host.
+
+If you're using virtual nodes for production data.
+You should check with your cloud provider to make sure that the virtual machines in your MapR cluster are not all hosted on the same node.
+
+## 5.2.6: Topology Strategies
+
+### 1. Failure Domains
+
+![Failure Domains](failure_domains.png)
+
+Segregate points of failure, such as racks or power drops.
