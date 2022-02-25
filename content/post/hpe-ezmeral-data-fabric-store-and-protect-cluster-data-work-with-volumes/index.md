@@ -120,3 +120,11 @@ If one rack goes down and all replicas are on nodes in that rack.
 Then your data is unavailable until the rack is put back into service.
 
 ![Rack Awareness topology](rack_awareness_topology.png)
+
+A better strategy is to create sub-topologies to define the different racks with nodes assigned appropriately.
+
+Here, there are four racks, each with its own sub-topology still under "/data".
+
+Volumes will still by default go to the  "/data" topology in this example, they can again go to any node in the cluster, but now MapR FS will automatically replicate the volumes containers to different sub-topologies which spreads the data out over different racks.
+
+![anti-pattern - assign volumes to a single rack topology](anti_pattern-assigning_volumes_to_rack_topology.png)
