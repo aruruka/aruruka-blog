@@ -272,3 +272,50 @@ Whether the volume’s data traffic should be encrypted
 If the cluster is installed in the secure mode.
 You can enable or disable wire encryption on the volumes.
 When wire encryption is enabled, data traffic using that volume is encrypted.
+
+### 4. Topology
+
+<details><summary>Topology</summary>
+
+Which node topology a volume’s data can be written to (/data is the default)
+
+![topology](topology.png)
+
+</details>
+
+The topology defines which nodes the volumes data can be written to.
+If you do not specify a topology, the default value of "/data" is used.
+
+### 5. Replication Type
+
+<details><summary>Replication Type</summary>
+
+![replication type - high throughput](replication_high.gif)
+
+* Once set, cannot change
+* High throughput (chain)
+
+  * Default
+  * Appropriate for most volumes
+
+![replication type - low latency](replication_low.gif)
+
+* Low latency (star)
+
+  * Best with small files
+  * Can impact network with large files
+
+</details>
+
+There are two replication types or patterns.
+Once a replication pattern is selected for a volume, it cannot be changed.
+The default replication pattern is: from the master container to the intermediate container and then from the intermediate container to the tail container.
+This pattern is appropriate for most user volumes and is optimized for high
+throughput.
+
+You can optionally select replication that is optimized for low latency.
+If you select low latency then both the intermediate and tail containers are replicated from the master container.
+
+Low latency should only be used if your volume contains smaller files or if the network can handle the additional bandwidth of creating both copies
+at the same time from the same master container.
+Note that the name container always uses low latency of replication and that cannot be changed.
