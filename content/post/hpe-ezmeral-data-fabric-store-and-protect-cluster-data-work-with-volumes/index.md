@@ -354,3 +354,34 @@ If the actual replication count falls below the target replication, the data wil
 The minimum replication is the total number of copies you must have
 of each container.
 The default is two. If the actual replication falls below the minimum replication factor, an alarm is raised and data replication begins immediately.
+
+## 5.3.3: Authorization
+
+### 1. Volume Permissions
+
+<details><summary>Volume Permissions</summary>
+
+Volume permissions can be granted to users or groups
+
+![volume permissions](volume_permissions.png)
+
+</details>
+
+Volume permissions specify what operations users and groups can perform on MapR volumes.
+Permission codes allow users and groups to dump or back up the volume mirror or restore the volume, modify volume properties, delete the volume, or review and edit volume permissions.
+
+### 2. Root Directory Permission
+
+<details><summary>Root Directory Permission</summary>
+
+![root directory permission](root_directory_permission.png)
+
+* Defines who can read and write data in the volume
+* Works in conjunction with user access controls
+
+</details>
+
+Root directory permissions are unique style, read write and execute permissions for owner, group and other by default.
+The owner is the user who created the volume.
+These permissions define who can read and write data in the volume.
+They work in conjunction with user access controls which are defined next.
