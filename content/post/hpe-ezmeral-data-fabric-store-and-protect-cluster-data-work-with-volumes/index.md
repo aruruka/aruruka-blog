@@ -26,8 +26,6 @@ image:
   focal_point: Smart
   preview_only: false
 ---
-![]()
-
 # Store and Protect Cluster Data - Work with Volumes
 
 ## 5.1.1: Review: Data Fabric FS Structures - Overview of Volumes
@@ -385,3 +383,46 @@ Root directory permissions are unique style, read write and execute permissions 
 The owner is the user who created the volume.
 These permissions define who can read and write data in the volume.
 They work in conjunction with user access controls which are defined next.
+
+### 3. User Access Controls
+
+<details><summary>User Access Controls</summary>
+
+![user access controls](user_access_controls.png)
+
+* Access Control Expressions allow granular control over permissions
+* Use expressions to include or exclude by user, group, or role
+
+</details>
+
+User access controls allow you to define very granular permissions rather than just assigning read/write or execute permissions in the standard unit scheme of owner, group and other.
+
+You can use access control expressions or aces to include or exclude permissions for a single user or for a group or even for a role that you define.
+Access control expressions are covered in more detail in a later lesson.
+
+## 5.3.5: Usage: Quotas
+
+### 1. Quota Types
+
+![quota types](quotas.png)
+
+Volume quotas allow you to restrict the size of a single volume and can be set at any time.
+
+When the advisory quota is reached, an alarm is raised but data continues to be written to the volume.
+
+When the hard quota is reached, no more data will be written to the volume.
+It is important to respond to advisory quota alarms to avoid impacting operations to the volume.
+
+### 2. What Counts?
+
+![what counts against quota](quotas2.png)
+
+* `10 GB source file :   10 GB`
+* `Compressed to 8 GB:   8 GB (8 GB counts against quota)`
+* `Replicated 3 times:   24 GB`
+
+When measuring disk usage only the space actually consumed by the first copy of the data accounts.
+
+For example, suppose a 10-gigabyte file is compressed to 8 gigabytes.
+When it's written, the file has a replication factor of three, so it consumes 24 gigabytes of disk space.
+However, only the first eight gigabytes are counted against the quota.
