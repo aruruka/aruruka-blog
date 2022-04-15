@@ -10,7 +10,7 @@ summary: >-
 
 
   Source: [HPE Ezmeral Learn On-Demand](https://learn.ezmeral.software.hpe.com/store-and-protect-cluster-data)
-draft: true
+draft: false
 featured: true
 authors:
   - Raymond Yan
@@ -426,3 +426,184 @@ When measuring disk usage only the space actually consumed by the first copy of 
 For example, suppose a 10-gigabyte file is compressed to 8 gigabytes.
 When it's written, the file has a replication factor of three, so it consumes 24 gigabytes of disk space.
 However, only the first eight gigabytes are counted against the quota.
+
+## 5.4.1: Typical Volume Layout - Design a Volume Plan
+
+Some volumes are created automatically when you install a cluster.
+For example, "opt", "user" and "mapr.var".
+A directory for the user "mapr" is also created automatically.
+You want to create your own volumes depending on your organization's structure and needs.
+Volumes of organizations.
+Typically create include things like projects or volumes for specific users.
+You need to plan out what your volume layout will look like your business needs.
+
+![typical volume layout - 1](typical_volume_layout_1.png)
+
+Some volumes are created automatically.
+
+![typical volume layout - 2](typical_volume_layout_2.png)
+
+Create additional volumes based on your business needs.
+
+## 5.4.2: Manage Data with Volumes
+
+The primary purpose of volumes is for data management.
+Volumes are used to easily set different policies and standards for different sets of data.
+This includes setting up access permissions and forcing disk limits or billing departments or teams for the storage they use.
+Different groups of data also often have different replication or encryption needs.
+Snapshots and mirrors, which are discussed in more detail.
+They are taken at the volume level. If you only had a single volume for all of your cluster data, you could only mirror or snapshot the entire cluster, which is not practical.
+
+![manage data with volumes](manage_data_volumes.png)
+
+Use volumes to:
+
+* Establish ownership and accountability
+
+  * standardize access permissions
+  * enforce disk use limits
+  * provide multi-tenant billing
+* Set replication policies
+* Assign encryption polices
+* Efficiently use snapshots and mirrors
+
+## 5.4.3: Volumes Example
+
+![volumes example](volumes_example.png)
+
+Here's an example of how things might look in practice.
+The engineering department has several volumes.
+The accountable entity for all the volumes is the engineering group which allows engineering to be built for the space it uses.
+Only the engineering group has access to this data.
+
+Production data is critical so it's replicated five times and also encrypted.
+Since a 5x replication factor can consume a lot of disk space.
+You probably don't want all of your data replicated this way.
+
+Test data requires frequent snapshots for quick recovery in case testing has an unexpected impact on the data.
+Also, everyone needs to have read access to the test data.
+
+Some files need to be mirrored to overseas locations for deployment.
+Since mirroring overseas can be expensive.
+Put only the required data in a single volume so you are not mirroring more than you need to.
+
+## 5.4.4: Volumes Best Practices
+
+![volumes best practices](volumes_best_practices.png)
+
+* Create volumes based on business requirements and practices
+* Create multiple volumes for users, departments, projects, etc.
+* Consider practical limitations on volume size
+
+For best results, create volumes based on your business requirements and practices and create multiple volumes.
+In general, more volumes is better for data distribution.
+While the MapR architecture doesn't prevent you from creating a small number of very large volumes, there are some practical limits you should be aware of, which we'll discuss next.
+
+## 5.4.6: Name Containers vs. Data Containers
+
+| Data Container                                   | Name Container                                         |
+| ------------------------------------------------ | ------------------------------------------------------ |
+| Stores data                                      | Stores metadata, and the first 64 KB of every file     |
+| Many (possibly millions) per volume              | Only one per volume                                    |
+| Size automatically managed (default about 32 GB) | Size limited only by the storage pool where it resides |
+
+Recall from earlier in this lesson that each volume has many data containers, but only a single name container. 
+The name container stores metadata for all of the files in the volume and also stores the 1st 64 kilobytes of each file. 
+
+MapR automatically manages the size and number of data containers, but the size of the single name container is limited only by the size of the storage pool where it resides.
+
+## 5.4.7: Name Container Sizing
+
+![name container sizing](name_container_sizing.png)
+
+* Name container resides on a single storage pool
+* Other containers will likely also be on that storage pool
+* No more volume data can be written if the name container is out of space
+* Since storage pools are generally uniform in size, the Data Fabric can’t relocate the name container to make more room
+
+When we say that the name container is bounded only by the size of the storage pool where it resides, keep in mind that there are likely other containers from this or other volumes on that storage pool.
+
+So for example, if you have a two-terabyte storage pool, a volume's name container will only get a portion of that space. 
+
+If the name container runs out of room, no additional data can be written to that volume. 
+
+And since storage pools are generally about the same size across the cluster, there likely won't be a storage pool with more room than the name container could be moved to. 
+
+A general recommendation is to keep name containers at or below 256 gigabytes. 
+
+The way to limit the size of a named container is to create more volumes because each new volume gets a new name container.
+
+## 5.4.8: Files per volume
+
+![files >= 64 KB](file_number_in_volume_1.png)
+
+What does this translate to as far as the number of files per volume? 
+
+Remember that the name container stores the 1st 64 kilobytes of every file, so the size of the name container will be the number of files in the volume times 64 K.
+
+Conversely, the maximum number of files per volume should be the maximum size you want for the name container divided by 64 K. 
+
+For example, you could store 4,000,000 files that are 64 K or larger in a volume before the name container would exceed 256 gigabytes. 
+
+![files <= 8 KB](file_number_in_volume_2.png)
+
+The picture is different if you were storing many small files. 
+
+The block size for chunks is 8 kilobytes, so even storing a four-kilobyte file will occupy 8 kilobytes of space. 
+
+If all your files are 8K or smaller, the size of the name container will be the number of files times 8K. 
+
+Flipping the equation again, the maximum files for a volume would be the maximum size you want for your name container divided by 8K.
+
+In this scenario, you could store 32 million files in a volume before the name container would exceed 256 gigabytes.
+
+## 5.4.9: Control Name Container Size
+
+1. Estimate number and size of files
+2. Determine maximum files for name container
+3. Create volumes that will store the required amount of data
+
+When planning your volumes, first estimate the number and size of files you will be stored over time. 
+
+Based on the file size, determine the maximum number of files for the name container. 
+
+Finally, design your volumes in such a way that each volume will contain fewer than your maximum number of files.
+
+## 5.4.10: Example: Maximum = 30 million files
+
+20 million files can fit in one volume
+
+![20 millon files](example_million_1.png)
+
+Suppose you determine that your threshold is 30 million files per volume.
+If you expect to collect 20 million files in a year, you could create a single volume for that year. 
+
+- - -
+
+100 million files will require four volumes
+
+![100 million files](example_million_2.png)
+
+If you expected to collect 100 million files, you would want to create a volume for each quarter. 
+
+- - -
+
+300 million files will require at least 10 volumes
+
+![300 million files](example_million_3.png)
+
+With 300,000,000 files, you would want to create a volume for every month.
+You can break that down further to weeks, days, or even hours if needed.
+
+## 5.4.11: Performance Considerations and the Name Container
+
+
+Let's take a look at how the distribution of files among name containers can impact performance when storing small files.
+Remember that if your files are smaller than 64 kilobytes, they will be stored in the name container.
+They will not be written to any data containers.
+The name container is replicated three by default.
+You will have three copies. If you only have three nodes in your cluster, it might work out fine.
+All three nodes can be used to read and write those files.
+But if you have a large cluster with 32 million files in a single volume, all reads and writes of those files will go to just three nodes in your cluster, the ones with the name containers.
+The solution to this problem is - "more volumes".
+The more volumes you create the more distributed your name containers will be, and the more evenly balanced the load on the cluster will be.
