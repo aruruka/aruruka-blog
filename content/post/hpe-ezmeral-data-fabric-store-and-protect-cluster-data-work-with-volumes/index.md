@@ -26,11 +26,16 @@ image:
   focal_point: Smart
   preview_only: false
 ---
+This article is a transcrption of one of the courses from HPE Ezmeral Learn On-Demand.
+
+The original course is free to learn, only need to register for an account.
+If you are interesting in HPE Ezmeral Data Fabric (known as MapR platform before), recommend you to take a look here 🔗 https://learn.ezmeral.software.hpe.com/store-and-protect-cluster-data
+
 # Store and Protect Cluster Data - Work with Volumes
 
 ## 5.1.1: Review: Data Fabric FS Structures - Overview of Volumes
 
-Let's take a look at the storage architecture behind the map - our distributed file and object-store.
+Let's take a look at the storage architecture behind the MapR distributed file and object-store.
 
 A cluster is made up of nodes and each node contains a number of disks.
 
