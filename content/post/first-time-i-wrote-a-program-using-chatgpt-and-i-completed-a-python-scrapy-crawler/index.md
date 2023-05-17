@@ -8,9 +8,10 @@ authors:
   - Raymond Yan
 tags:
   - ChatGPT
+  - instruction tuned LLMs
 categories:
   - AI
-  - productivity_tool
+  - productivity tool
 image:
   filename: featured
   focal_point: Smart
