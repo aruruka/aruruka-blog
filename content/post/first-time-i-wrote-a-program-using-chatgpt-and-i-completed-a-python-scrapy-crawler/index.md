@@ -1,7 +1,37 @@
 ---
 title: First time I wrote a program using ChatGPT and I completed a Python
   Scrapy crawler
+subtitle: With the All trend you need to recognize what AI tools can do for you
+  and learn how to how to use them.
 date: 2023-05-24T08:22:48.685Z
+summary: "At the time I used ChatGPT to complete the above Python Scrapy
+  crawler, I had not yet learned the basic skills of prompt engineering.\r
+
+  After this experience, I am determined to learn the usage and principles of
+  the tools currently available on the market in a systematic way.
+
+
+  \r
+
+  \r
+
+  ChatGPT and similar instruction-tuned LLMs can help IT techs be very
+  productive.\r
+
+  But it won't help you achieve your goals if you haven't learned
+  systematically about what you want to accomplish.\r
+
+  You still need to have a systematic, specialized knowledge of what you're
+  doing.\r
+
+  ChatGPT is perhaps most useful because it can save you time that you would
+  otherwise spend reading, or practicing (to deepen your proficiency).\r
+
+  \r
+
+
+  If you don't have the expertise and systematic knowledge, then you can't
+  tell if ChatGPT is giving you the right answers."
 draft: false
 featured: true
 authors:
