@@ -43,7 +43,7 @@ categories:
   - AI
   - productivity tool
 image:
-  filename: https://i.ibb.co/gZM9gx9/Featured-Image-First-Time-Chat-GPT-Python-Scrapy-Scrawler.png
+  filename: featuredimage-firsttimechatgpt-pythonscrapyscrawler.png
   focal_point: Smart
   preview_only: false
   caption: First time I wrote a program using ChatGPT and I completed a Python
